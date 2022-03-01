@@ -1,0 +1,79 @@
+﻿@model MVC.Models.Estadia
+
+@{
+    ViewBag.Title = "Processa Saída";
+}
+
+<h2>Processa Saída</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken();
+    @Html.HiddenFor(model => model.EstadiaID)
+    @Html.HiddenFor(model => model.data_entrada)
+    @Html.HiddenFor(model => model.data_saida)
+    @Html.HiddenFor(model => model.valor_pago)
+    @Html.HiddenFor(model => model.QuartoID)
+    @Html.HiddenFor(model => model.ClienteID)
+
+
+<div>
+    <h4>Estadia</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cliente.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cliente.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quarto.ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quarto.ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.data_entrada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data_entrada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.data_saida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data_saida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valor_pago)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valor_pago)
+        </dd>
+        <dt>
+            Dias de estadia
+        </dt>
+        <dd>
+            @Html.Raw(ViewBag.dias)
+        </dd>
+    </dl>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Confirmar" class="btn btn-default"/>
+        </div>
+    </div>
+</div>
+}
+<p>
+    @Html.ActionLink("Voltar", "ListarEstadiasEmCurso")
+</p>

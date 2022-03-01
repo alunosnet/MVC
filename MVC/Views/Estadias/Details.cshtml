@@ -1,0 +1,58 @@
+﻿@model MVC.Models.Estadia
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Estadia</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cliente.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cliente.Nome)
+        </dd>
+
+        <dt>
+            Quarto
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quarto.ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.data_entrada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data_entrada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.data_saida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data_saida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valor_pago)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valor_pago)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EstadiaID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

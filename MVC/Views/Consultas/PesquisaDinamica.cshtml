@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Pesquisa Dinamica";
+}
+
+<h2>Pesquisa Dinamica</h2>
+
+<form method="post" id="formPesquisa">
+    Nome: <input type="text" name="nome" id="nome" class="form-control" />
+    <input type="submit" value="Pesquisar" class="btn btn-default" />
+</form>
+
+<div id="divClientes"></div>
+
+<script>
+    window.onload = function () {
+        $("#formPesquisa").submit(function (event) {
+            
+            carregarDados();
+            event.preventDefault();
+        });
+        $("#nome").on('input', function () {
+            carregarDados();
+        });
+    }
+    function carregarDados() {
+        console.log("Form");
+        $("#divClientes").empty();
+        if ($("#nome").val() == "" || $("#nome").val() == undefined) return;
+        $.ajax(
+            {
+                type: "GET",
+                url: "PesquisaNome",
+                data: "nome=" + $("#nome").val(),
+                success: function (dados) {
+                    console.log("Form");
+                    $("#divClientes").empty();
+                    for (let i = 0; i < dados.length; i++)
+                        $("#divClientes").append("<p>"+dados[i].nome+"</p>");
+                },
+                error: function (dados) {
+                    console.log(dados);
+                }
+            }
+        );
+    }
+</script>

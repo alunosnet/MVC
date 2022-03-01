@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MVC.Models.Estadia>
+
+@{
+    ViewBag.Title = "ListarEstadiasEmCurso";
+}
+
+<h2>ListarEstadiasEmCurso</h2>
+
+<p>
+    @Html.ActionLink("Criar nova", "Create") | @Html.ActionLink("Listar Todas", "Index")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cliente.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quarto.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.data_entrada)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.cliente.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quarto.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.data_entrada)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Check out", "ProcessaSaida", new { id=item.EstadiaID }) 
+        </td>
+    </tr>
+}
+
+</table>

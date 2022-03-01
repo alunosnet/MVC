@@ -1,0 +1,58 @@
+﻿@model IEnumerable<MVC.Models.Estadia>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Estadia nova", "Create") | @Html.ActionLink("Estadias em curso", "ListarEstadiasEmCurso")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cliente.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quarto.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.data_entrada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.data_saida)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.valor_pago)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.cliente.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quarto.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.data_entrada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.data_saida)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.valor_pago)
+        </td>
+        <td>
+            @if (item.valor_pago == 0) { 
+                @Html.ActionLink("Edit", "Edit", new { id=item.EstadiaID }) 
+            }
+            @Html.ActionLink("Details", "Details", new { id=item.EstadiaID }) 
+        </td>
+    </tr>
+}
+
+</table>

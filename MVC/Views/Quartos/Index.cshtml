@@ -1,0 +1,59 @@
+﻿@model IEnumerable<MVC.Models.Quarto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Criar novo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.piso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lotacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.custo_dia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.casa_banho)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estado)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.piso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lotacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.custo_dia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.casa_banho)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estado)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            @if(Request.IsAuthenticated && User.IsInRole("Administrador")) { 
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) <span>|</span>
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            }
+        </td>
+    </tr>
+}
+
+</table>
